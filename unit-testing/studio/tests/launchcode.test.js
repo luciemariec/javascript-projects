@@ -25,7 +25,7 @@ describe("Testing launchcode", function(){
   test("The value of the percentageCoolEmployees key should be 100", function() {
     expect(launchcode.percentageCoolEmployee).toBe(100);
   });
-  test("The value of the programsOffered key should be 100 ['Web Development', 'Data Analysis', 'LiftOff']", function() {
+  test("The value of the programsOffered key should be ['Web Development', 'Data Analysis', 'LiftOff']", function() {
     expect(launchcode.programOffered).toContain('Web Development');
     expect(launchcode.programOffered).toContain('Data Analysis');
     expect(launchcode.programOffered).toContain('LiftOff');
