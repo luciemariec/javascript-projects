@@ -1,0 +1,61 @@
+<!doctype html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Engine Selector</title>
+<script>
+window.addEventListener("load", function(){
+	// Register the handler for the form submission
+	document.getElementById("searchForm").addEventListener("submit", function(event) {
+	// Prevent the default form submission behavior
+	event.preventDefault();
+	
+	// Get the selected search engine value
+	var selectedEngine = document.querySelector('input[name="engine"]:checked').value;
+	
+	// Get the search query from the input field
+	var query = document.getElementById("searchQuery").value;
+	
+	// Construct the search URL based on the selected search engine and query
+	var searchUrl;
+	if (selectedEngine === "google") {
+		searchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+	} else if (selectedEngine === "duckDuckGo") {
+		searchUrl = "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+	} else if (selectedEngine === "bing") {
+		searchUrl = "https://www.bing.com/search?q=" + encodeURIComponent(query);
+	} else if (selectedEngine === "ask") {
+		searchUrl = "https://www.ask.com/web?q=" + encodeURIComponent(query);
+	}
+	
+	// Redirect the user to the constructed search URL
+	window.location.href = searchUrl;
+	});
+});
+</script>
+</head>
+<body>
+<form action="#" id="searchForm">
+<input type="text" id="searchQuery" placeholder="Search...">
+
+<label for="google">
+	<input type="radio" id="google" name="engine" value="google" checked> Google
+</label>
+
+<label for="duckDuckGo">
+	<input type="radio" id="duckDuckGo" name="engine" value="duckDuckGo"> DuckDuckGo
+</label>
+
+<label for="bing">
+	<input type="radio" id="bing" name="engine" value="bing"> Bing
+</label>
+
+<label for="ask">
+	<input type="radio" id="ask" name="engine" value="ask"> Ask
+</label>
+
+<input type="submit" value="Go!">
+</form>
+</body>
+</html>
